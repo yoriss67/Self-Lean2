@@ -60,11 +60,11 @@
 // }
 
 
-import React from 'react';
+// import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
 import Slider from 'react-slick';
-import flavorsData from '../data/flavorsData'
+import flavorsData from '../data/flavorsData.json'
 
 // Define the type for each flavor item
 type FlavorItem = {

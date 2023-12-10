@@ -1,0 +1,366 @@
+a {
+  text-decoration: none;
+  color: #000;
+}
+li {
+  list-style-type: none;
+}
+
+/*------------------------------------
+ヘッダー a hover:下線アンダーライン ↓
+------------------------------------*/
+
+.logo {
+}
+
+.logo {
+  color: #eed199;
+  font-size: 1.8rem;
+  height: auto;
+  text-decoration: none;
+  /* -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+  /* background-image: url(../public/vanilla.png); */
+}
+
+.nav-item {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.3rem;
+  color: #000;
+}
+
+/* 一番下の線 */
+.nav-item::after {
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 1px;
+  background: #2c433f;
+  background: #fff;
+  /* Ｘ，Ｙ   見えなくなりかけの時*/
+  transform: scale(0, 1);
+  /* The transform-origin is the point around which a transformation is applied. */
+  /* topでもbottomでも変わらないのは高さが「1」だから */
+  /* 見えなくなりかけの時だから「right」て書かないと右に消えるようにならない */
+  transform-origin: right top;
+  transition: transform 0.3s;
+}
+.nav-item:hover {
+  color: #2c433f;
+  text-decoration: none;
+}
+.nav-item:hover::after {
+  transform-origin: left top;
+  transform: scale(1, 0.6);
+  color: #fff;
+}
+
+/*------------------------------------
+ヘッダー pcハンバーガーメニュー ↓
+------------------------------------*/
+header {
+  font-weight: 700;
+}
+
+header .pc_navbar {
+  margin: auto;
+  width: 90%;
+  padding: 2% 4%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pc_navbar img {
+  width: 100%;
+  padding: 6% 3% 6% 9%;
+  padding: 8% 3% 8% 9%;
+  background-color: #7789aa;
+  border-radius: 10px;
+}
+
+.pc_nav {
+  padding: 0;
+}
+
+.pc_ul {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0 auto;
+}
+.pc_ul li,
+.pc_ul .ul_link {
+  margin-right: 40px;
+}
+
+/* .pc_ul li:last-of-type {
+  margin-right: 0;
+} */
+
+.pc_nav .nav-item {
+  color: #eed199;
+}
+
+.fa-twitter {
+  color: #1da1f2;
+  font-size: 1.5rem;
+}
+
+.fa-instagram {
+  color: #e1306c;
+  font-size: 1.5rem;
+}
+/*------------------------------------
+ヘッダー spハンバーガーメニュー ↓
+------------------------------------*/
+nav {
+  display: flex;
+  align-items: center;
+  padding: 1% 2%;
+  justify-content: center;
+}
+
+.sp_navbar {
+  text-align: center;
+}
+.sidemenu {
+  height: 100vh;
+  height: 100%;
+
+  padding-top: 10vh;
+  position: fixed;
+  right: -40%; /*メニュー幅*/
+  transition: all 0.6s;
+  top: 0;
+  width: 40%; /*メニュー幅*/
+  z-index: 100;
+  background-color: #fff;
+}
+
+/* 🤔 */
+/* .pc_no {
+
+    display: inline-block;
+} */
+nav {
+  justify-content: center;
+}
+
+.sidemenu ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+  line-height: 0.5rem;
+}
+
+.sidemenu nav ul li {
+  padding: 20px;
+}
+.sidemenu .ul_link {
+  padding: 20px 0 0 0;
+}
+
+.hamburger {
+  cursor: pointer;
+  height: 60px;
+  position: absolute;
+  right: 2%;
+  top: 1%;
+  width: 5rem;
+  z-index: 101;
+}
+/* .hamburger span {
+  height: 1.5px;
+  right: 15px;
+  position: absolute;
+  position: fixed;
+  transition: all 0.6s;
+
+} */
+
+.first_line {
+  transition: all 0.5s;
+  top: 20px;
+  width: 30px;
+  height: 100%;
+  position: relative;
+  background-color: #fff;
+}
+
+.first_line::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  transform: translate(-20px, -5px);
+  width: 50px;
+  height: 10px;
+  /* background-color: rgba(255, 192, 203, 0.715); */
+}
+
+.second_line {
+  transition: all 0.5s;
+  top: 29px;
+  width: 25px;
+  transform: translateX(4px);
+  position: relative;
+  background-color: #fff;
+}
+
+.second_line::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  transform: translate(-20px, -5px);
+  width: 50px;
+  height: 10px;
+  /* background-color: rgba(255, 192, 203, 0.715); */
+}
+
+.third_line {
+  transition: all 0.5s;
+  top: 38px;
+  width: 19px;
+  transform: translateX(10px);
+  position: relative;
+  background-color: #fff;
+}
+
+.third_line::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  transform: translate(-20px, -5px);
+  width: 50px;
+  height: 10px;
+  /* background-color: rgba(255, 192, 203, 0.715); */
+}
+
+.blue {
+  background-color: #000;
+  transition: background-color 1s;
+}
+
+/*------------------------------------
+メニュークリックした後 ↓　🥰🥰🥰なるほど！
+------------------------------------*/
+.nav_open .sidemenu {
+  right: 0;
+}
+.nav_open .first_line {
+  top: 26px;
+  transform: rotate(45deg);
+}
+.nav_open .second_line {
+  left: 50%;
+  width: 0;
+}
+.nav_open .third_line {
+  top: 26px;
+  transform: rotate(-45deg);
+  width: 30px;
+}
+.nav_open .overlay {
+  opacity: 0.8;
+  visibility: visible;
+}
+
+/* 自作 */
+.nav_open .hamburger {
+  position: fixed;
+}
+/*------------------------------------
+メニュークリック後メニュー外の背景 ↓
+------------------------------------*/
+.overlay {
+  background-color: #656b74;
+  cursor: pointer;
+  height: 100vh;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  transition: all 0.6s;
+  visibility: hidden;
+  width: 100vw;
+  z-index: 99;
+}
+
+header li a {
+  font-family: "Noto Serif", serif;
+}
+
+@media screen and (max-width: 1000px) {
+  .sp_no {
+    display: none;
+  }
+  .sidemenu {
+    right: -50%;
+    width: 50%;
+  }
+  .hamburger {
+    top: 0;
+    position: fixed;
+  }
+
+  .logo {
+  }
+
+  .nav-item::after {
+    background: #2c433f;
+  }
+
+  /* Hamburger */
+  .hamburger span {
+    height: 1px;
+    right: 20px;
+    position: absolute;
+    position: fixed;
+    transition: all 0.6s;
+  }
+
+  .second_line,
+  .third_line {
+    transform: translateX(0px);
+  }
+
+  .first_line:hover {
+    width: 40px;
+    transform: translateX(-5px);
+  }
+
+  .second_line:hover {
+    width: 20px;
+    transform: translateX(7px);
+  }
+
+  .third_line:hover {
+    width: 35px;
+    transform: translateX(-2px);
+  }
+
+  .first_line::after {
+    transform: translate(-10px, -5px);
+  }
+
+  .second_line::after {
+    transform: translate(-10px, -5px);
+  }
+
+  .third_line::after {
+    transform: translate(-10px, -5px);
+  }
+}
+@media screen and (min-width: 999px) {
+  .pc_no {
+    display: none;
+  }
+}

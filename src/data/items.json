@@ -1,0 +1,38 @@
+[
+    {
+      "id": 1,
+      "name": "Vanilla",
+      "price": 125,
+      "imgUrl": "/imgs/Vanilla.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Blue berry",
+      "price": 130,
+      "imgUrl": "/imgs/Blue berry.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Cheesecake",
+      "price": 130,
+      "imgUrl": "/imgs/Cheesecake.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Straw berry",
+      "price": 125,
+      "imgUrl": "/imgs/Straw berry.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Matcha",
+      "price": 135,
+      "imgUrl": "/imgs/Matcha.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Macadamia nuts",
+      "price": 135,
+      "imgUrl": "/imgs/Macadamia nuts.jpg"
+    }
+  ]

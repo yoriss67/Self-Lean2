@@ -1,0 +1,41 @@
+.Store {
+    width: 80%;
+    margin: 5vh auto;
+  }
+  
+
+img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+}
+
+
+.store-item-img {
+    object-fit: cover;
+    scale: .9;
+    border-radius: 10px;
+}
+
+.remove-button {
+    background-color: #438BA3;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.hover-shadow {
+    transition: all 1s ease-in-out;
+}
+
+.hover-shadow:hover {
+    transform: translate(0, -0.5px);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.card-body {
+    width: 90%;
+    margin: 0 auto;
+}

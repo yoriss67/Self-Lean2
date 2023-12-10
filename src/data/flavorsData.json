@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "title": "Vanilla",
+    "image": "vanilla.png",
+    "desc": "人気No.1",
+    "kcal": 93
+  },
+  {
+    "id": 2,
+    "title": "Blue berry",
+    "image": "blueberry.png",
+    "desc": "鉄分も豊富",
+    "kcal": 85
+  },
+  {
+    "id": 3,
+    "title": "Cheesecake",
+    "image": "cheesecake.png",
+    "desc": "リッチな味わい",
+    "kcal": 100
+  },
+  {
+    "id": 4,
+    "title": "Straw berry",
+    "image": "strawberry.png",
+    "desc": "フレッシュな甘さ",
+    "kcal": 85
+  },
+  {
+    "id": 5,
+    "title": "Matcha",
+    "image": "matcha.png",
+    "desc": "本格派の抹茶味",
+    "kcal": 85
+  },
+  {
+    "id": 6,
+    "title": "Macadamia nuts",
+    "image": "macadamianut.png",
+    "desc": "贅沢なクリーミーさ",
+    "kcal": 85
+  }
+]

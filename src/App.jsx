@@ -6,7 +6,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 
-import { ShoppingCartProvider } from './context/ShoppingCartContext';
+import { ShoppingCartProvider } from './context/ShoppingCartContext.js';
 
 
 function App() {

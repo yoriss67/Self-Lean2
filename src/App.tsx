@@ -1,5 +1,5 @@
-import { Routes, Route, Link, BrowserRouter as Router } from 'react-router-dom';
-import { Home, Navbar, Store, Footer } from './index';
+import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Home, Navbar, Store, Footer } from './index.js';
 import './index.css';
 
 import 'slick-carousel/slick/slick.css';

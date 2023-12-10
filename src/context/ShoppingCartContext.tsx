@@ -1,6 +1,6 @@
-import { useState, createContext, useContext } from 'react';
-import ShoppingCart from '../components/ShoppingCart';
-import  useLocalStorage  from "../hooks/useLocalStorage"
+import { useState, createContext, useContext } from "react";
+import ShoppingCart from "../components/ShoppingCart";
+import useLocalStorage from "../hooks/useLocalStorage";
 //🤔asって何？
 const ShoppingCartContext = createContext({} as ShoppingCartContext);
 
@@ -31,9 +31,8 @@ type ShoppingCartContext = {
   // 42:00 cart iconの数字のため
   openCart: () => void;
   closeCart: () => void;
- cartQuantity: number;
- cartItems: CartItem[];
-
+  cartQuantity: number;
+  cartItems: CartItem[];
 };
 
 //🌸useShoppingCart Hook...is a custom hook that any component can use
@@ -50,76 +49,79 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   //🤔why are there two [ ] ?
   // const [cartItems, setCartItems] = useState<CartItem[]>( [ ]);
 
-    // 57:00 useLocalStorage
-  const [cartItems, setCartItems] = useLocalStorage<CartItem[]>( "shopping-cart", [ ]);
+  // 57:00 useLocalStorage
+  const [cartItems, setCartItems] = useLocalStorage<CartItem[]>(
+    "shopping-cart",
+    []
+  );
 
   // 43:00
-  const [ isOpen, setIsOpen ] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  // 🤔🤔なんで0？どこで使われてる？
-  const cartQuantity = cartItems.reduce((quantity, item )=> quantity + item.quantity, 0)
-
+  // 🤔🤔なんで0？どこ∏で使われてる？
+  // const cartQuantity = cartItems.reduce((quantity, item )=> quantity + item.quantity, 0)
+  // 🌸
+  const cartQuantity = cartItems.reduce(
+    (quantity: number, item: CartItem) => item.quantity + quantity,
+    0
+  );
 
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);
-
 
   function getItemQuantity(id: number) {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
   }
 
-  function increaseCartQuantity (id: number) {
-    setCartItems(currItems => {
+  function increaseCartQuantity(id: number) {
+    setCartItems((currItems) => {
+      // 🤔=== idのidはどこから来てるの？
+      if (currItems.find((item) => item.id === id)) {
+        // アイテムが存在する場合の処理
+        return currItems.map((item) => {
+          // 🤔=== idのidはどこから来てるの？
+          // 🤔なぜ再度ifでid確認？
+          if (item.id === id) {
+            // 🤔😡
+            // item.quantity += 1;
+            // 🌸😡該当するアイテムの数量を増やす処理を行った後に、そのアイテムオブジェクトを返す必要があります。
+            return { ...item, quantity: item.quantity + 1 };
+          }
+          // 🤔なぜreturn item;が必要？
+          return item;
+        });
+      } else {
+        // アイテムが存在しない場合の処理
+        //  🤔なぜ[ ]?
+        return [...currItems, { id, quantity: 1 }];
+      }
+    });
+  }
 
-       // 🤔=== idのidはどこから来てるの？
-       if(currItems.find(item => item.id === id)) {
-           // アイテムが存在する場合の処理
-           return currItems.map(item => {
-               // 🤔=== idのidはどこから来てるの？
-               // 🤔なぜ再度ifでid確認？
-           if (item.id === id) {
-               // 🤔😡
-               // item.quantity += 1;
-               // 🌸😡該当するアイテムの数量を増やす処理を行った後に、そのアイテムオブジェクトを返す必要があります。
-               return {...item, quantity: item.quantity + 1}
-           }
-           // 🤔なぜreturn item;が必要？
-           return item;
-           })
-       } else {
-           // アイテムが存在しない場合の処理
-          //  🤔なぜ[ ]?
-           return [...currItems, { id, quantity: 1 }];
-       }      
-
-    })
- }
-
- function decreaseCartQuantity (id: number) {
-    setCartItems(currItems => {
-
-        // アイテムが存在し、その数量が1であるかどうかを確認
-        // 🤔?.quantityって何？
-       if(currItems.find(item => item.id === id)?.quantity === 1) {
+  function decreaseCartQuantity(id: number) {
+    setCartItems((currItems) => {
+      // アイテムが存在し、その数量が1であるかどうかを確認
+      // 🤔?.quantityって何？
+      if (currItems.find((item) => item.id === id)?.quantity === 1) {
         // 数量が1のアイテムを配列から除外
         // 🤔なんでfilter？ item.id !== idは現在のidと同じじゃないものを返すってこと？
-        return currItems.filter(item => item.id !== id)
-       }  
-       // 該当のアイテムの数量を1減少させる
-       return currItems.map(item => {
+        return currItems.filter((item) => item.id !== id);
+      }
+      // 該当のアイテムの数量を1減少させる
+      return currItems.map((item) => {
         if (item.id === id) {
-            return {...item, quantity: item.quantity - 1}
+          return { ...item, quantity: item.quantity - 1 };
         } else {
-            return item;
+          return item;
         }
-       })
-    })
- }
+      });
+    });
+  }
 
- function removeFromCart(id: number) {
-    setCartItems(currItems => {
-      return currItems.filter(item => item.id !== id)
-    })
+  function removeFromCart(id: number) {
+    setCartItems((currItems) => {
+      return currItems.filter((item) => item.id !== id);
+    });
   }
 
   return (
@@ -137,7 +139,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     >
       {children}
       {/* 🤔何これ  isOpen={isOpen}*/}
-      <ShoppingCart isOpen={isOpen}/>
+      <ShoppingCart isOpen={isOpen} />
     </ShoppingCartContext.Provider>
   );
 }
